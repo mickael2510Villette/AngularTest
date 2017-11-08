@@ -1,0 +1,25 @@
+<div >
+    <table class="table table-striped centered" >
+        <thead>
+            <tr class="text-center">
+                <th class="text-center">Nom</th>
+                <th class="text-center">Prenom</th>
+                <th class="text-center">Prenom Reverse</th>
+                <th class="text-center">Telephone</th>
+                <th class="text-center">Email</th>
+                <th class="text-center">Montant</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="personne in listepersonnes | orderBy:'nom'">
+                <td class="text-center"><label>{{personne.nom | uppercase}}</label></td>
+                <td class="text-center"><label>{{personne.prenom | uppercase}}</label></td>
+                <td class="text-center"><label>{{personne.prenom | reverse}}</label></td>
+                <td class="text-center"><label>{{personne.telephone }}</label></td>
+                <td class="text-center"><label>{{personne.email }}</label></td>
+                <td class="text-center"><label>{{personne.montant }}</label></td>
+            </tr>
+        </tbody>
+    </table>
+    <input class="btn btn-success" ng-click="envoyerGet()" value="Charger données" />
+</div>

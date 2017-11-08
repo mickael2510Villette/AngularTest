@@ -1,0 +1,90 @@
+<form novalidate name="formulaireTest" class="" ng-submit="submit()">
+    <!--method="post" action="#" ng-submit="submit()"-->
+    <div class="form-group">
+        <label for="name" class="cols-sm-2 control-label">Votre Nom</label>
+        <div class="cols-sm-10">
+            <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-user fa" ></i></span>
+                <input type="text" class="form-control" name="nom" id="name"  placeholder="Saisissez votre nom" ng-model="user.nom" required/></input>
+            </div>
+            <div class="alert alert-info" ng-show="formulaireTest.nom.$invalid">
+                <span >Veuillez saisir votre nom</span> 
+            </div>
+        </div>
+    </div>
+    
+    <div class="form-group">
+        <label for="name" class="cols-sm-2 control-label">Votre Prenom</label>
+        <div class="cols-sm-10">
+            <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                <input type="text" class="form-control" name="prenom" id="name"  placeholder="Saisissez votre prenom" ng-model="user.prenom" required/>
+            </div>
+            <div class="alert alert-info" ng-show="formulaireTest.prenom.$invalid">
+                <span >Veuillez saisir votre prénom</span> 
+            </div>
+        </div>
+    </div>
+    
+    <div class="form-group">
+        <label for="email" class="cols-sm-2 control-label">Votre Email</label>
+        <div class="cols-sm-10">
+            <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+                <input type="email" class="form-control" name="email" id="email"  placeholder="Entrez votre Email" ng-model="user.email" required/>
+            </div>
+            <div class="alert alert-info" ng-show="formulaireTest.email.$invalid">
+                <span >Veuillez saisir votre e-mail</span> 
+            </div>
+        </div>
+    </div>
+    
+    <div class="form-group">
+        <label for="tel" class="cols-sm-2 control-label">Téléphone: </label>
+        <div class="cols-sm-10">
+            <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-phone fa" aria-hidden="true"></i></span>
+                <input id="tel" name="tel" class="form-control" type="text" ng-model="usertel" numbers-only num-validator placeholder="Saisissez votre Numéro de téléphone" required/>
+            </div>
+        </div>
+        <div class="alert alert-warning" ng-show="formulaireTest.tel.$error.usertel">
+            <span >Format de numéro incorrect</span> 
+        </div>
+        <div class="alert alert-info" ng-show="formulaireTest.tel.$invalid" ng-if="!formulaireTest.tel.$error.usertel">
+            <span >Veuillez saisir votre téléphone</span> 
+        </div>
+    </div>
+    
+   <!-- <div class="form-group">
+        <label for="name" class="cols-sm-2 control-label">Montant du crédit</label>
+        <div class="cols-sm-10">
+            <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-credit-card fa" aria-hidden="true"></i></span>
+                <input type="text" class="form-control" name="credit" id="credit"  placeholder="Saisissez le montant de votre crédit" ng-model="user.credit" required/>
+            </div>
+            <div class="alert alert-info" ng-show="formulaireTest.credit.$invalid">
+                <span >Veuillez saisir votre montant de crédit</span> 
+            </div>
+            <span class="text-center">{{user.credit | limitTo:4 | currency:'€'}}</span>
+        </div>
+    </div>-->
+
+    <div class="form-group">
+        <label for="name" class="cols-sm-2 control-label">Montant du crédit</label>
+        <div class="cols-sm-10">
+            <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-credit-card fa" aria-hidden="true"></i></span>
+                <select class="form-control" name="credit" id="credit" ng-model="user.credit" ng-options="valueMontant.value for valueMontant in valueMontants" required></select>
+            </div>
+            <div class="alert alert-info" ng-show="formulaireTest.credit.$invalid">
+                <span >Veuillez choisir votre montant de crédit</span> 
+            </div>
+        </div>
+    </div>
+
+    <br/>
+    <div >
+        <input class="btn btn-danger" type="button" ng-click="reset()" value="Annuler" />
+        <input class="btn btn-success" type="submit" id="submit" value="Valider" ng-disabled="formulaireTest.$invalid"/>
+    </div>
+</form> 
